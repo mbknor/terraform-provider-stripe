@@ -2,6 +2,7 @@ package stripe
 
 import (
 	"log"
+	//"os"
 
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
@@ -32,8 +33,10 @@ func Provider() terraform.ResourceProvider {
 }
 
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
+	apiToken := d.Get("api_token").(string)
+	//os.Setenv("STRIPE_API_TOKEN", apiToken) // hack to make this work: DefaultFunc: schema.EnvDefaultFunc("STRIPE_API_TOKEN", nil),
 	config := Config{
-		APIToken: d.Get("api_token").(string),
+		APIToken: apiToken,
 	}
 
 	log.Println("[INFO] Initializing Stripe client")
