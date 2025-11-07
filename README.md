@@ -1,3 +1,14 @@
+# Fork-Info
+
+This is a fork from
+https://github.com/Mongey/terraform-provider-stripe
+
+With these important changes:
+
+## We archive price plans and products in stead of deleting them
+
+So when terraform deletes it, it is actually archived
+
 # Terraform Stripe Provider
 
 This provider enables Stripe merchants to manage certain parts of their

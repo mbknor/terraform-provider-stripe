@@ -185,11 +185,10 @@ func resourceStripeProductUpdate(d *schema.ResourceData, m interface{}) error {
 
 func resourceStripeProductDelete(d *schema.ResourceData, m interface{}) error {
 	client := m.(*client.API)
-	_, err := client.Products.Del(d.Id(), nil)
+	params := stripe.ProductParams{}
 
-	if err == nil {
-		d.SetId("")
-	}
+	params.Active = stripe.Bool(false)
 
+	_, err := client.Products.Update(d.Id(), &params)
 	return err
 }
