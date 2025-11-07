@@ -9,6 +9,26 @@ With these important changes:
 
 So when terraform deletes it, it is actually archived
 
+
+...
+...
+...
+...
+
+# How to build and deploy
+
+* commit everything
+* tag with version like this: `git tag v1.0.1`
+* update version in the format `1.0.1` in `./build.sh`
+* run `./build.sh`
+* create new release with the name `v1.0.1` in github.
+* upload all files in `dist` to this release
+...
+...
+...
+...
+
+
 # Terraform Stripe Provider
 
 This provider enables Stripe merchants to manage certain parts of their
