@@ -391,11 +391,10 @@ func resourceStripePlanUpdate(d *schema.ResourceData, m interface{}) error {
 
 func resourceStripePlanDelete(d *schema.ResourceData, m interface{}) error {
 	client := m.(*client.API)
-	_, err := client.Plans.Del(d.Id(), nil)
+	params := stripe.PlanParams{}
 
-	if err == nil {
-		d.SetId("")
-	}
+	params.Active = stripe.Bool(false)
 
+	_, err := client.Plans.Update(d.Id(), &params)
 	return err
 }
